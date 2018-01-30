@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: richtest
-        image: metalhorse442/richtest:2
+        image: metalhorse442/richtest:1
         ports: 
         - containerPort: 80
