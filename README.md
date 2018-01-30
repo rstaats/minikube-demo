@@ -10,7 +10,7 @@ Clone this repo and run the minikubeinstall.sh
 ##Docker Build Steps
 Using the docker file you can create your own Docker image for use with the lab. You will want to register your account on hub.docker.com. Once you have registered click create repository and give it a name of <yourname>test
 
-```docker build . --tag <yourname>test:1``
+```docker build . --tag <yourname>test:1```
 
 Now change the Hello World line in the DockerFile to Hello MetalToad and save it
 
