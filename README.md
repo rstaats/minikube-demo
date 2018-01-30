@@ -1,13 +1,13 @@
 # minikube-demo
 The purpose of this repo is use for a demonstration lunch and learn talk. 
 
-##Prerequisites
+## Prerequisites
 Ensure you are running Docker on your Mac and that HomeBrew is installed
 
-##Setup Instructions
+## Setup Instructions
 Clone this repo and run the minikubeinstall.sh 
 
-##Docker Build Steps
+## Docker Build Steps
 Using the docker file you can create your own Docker image for use with the lab. You will want to register your account on hub.docker.com. Once you have registered click create repository and give it a name of <yourname>test
 
 ```docker build . --tag <yourname>test:1```
@@ -27,7 +27,7 @@ Now we want to push both images:
 ```docker push <youraccount>/<reponame>:1```
 ```docker push <youraccount>/<reponame>:2```
 
-##Setting up MiniKube
+## Setting up MiniKube
 run the following command:
 ```minikube start```
 
@@ -37,17 +37,17 @@ To open our dashboard for minkube run:
 Next you will want to update the information in the deploy.yml to reflect your image name :1  and save
 Ensure that you've updated the container name and app name in all places for service.yml and deploy.yml
 
-###Deploying the Service to Minikube
+### Deploying the Service to Minikube
 ```kubectl create -f service.yml```
 To validate your service has been created run the following:
 ```kubectl get services```
 
-###Deploying the Deployment File to MiniKube
+### Deploying the Deployment File to MiniKube
 ```kubectl create -f deploy.yml```
 To validate your deployment you can run the following:
 ```kubectl get deployments```
 You should now be able to navigate to the same IP address as the mikube dashboard on http port 32123 and see your Hello World message
-####Assorted Kube Status Commands:
+#### Assorted Kube Status Commands:
 ```kubectl get pods```
 ```kubectl get services```
 ```kubectl get deployments```
@@ -55,7 +55,7 @@ You should now be able to navigate to the same IP address as the mikube dashboar
 ```kubectl rollout status <deployment name>```
 ```kubectl rollout history <deployment name>```
 
-###Make Deployment Changes
+### Make Deployment Changes
 Change the number of replicas in the deploy.yml to 10 and save. Then run:
 ```kbuectl apply -f deploy.yml```
 Next lets change the image used from the one ending :1 to :2 and save. Then run:
@@ -67,7 +67,7 @@ Now lets say we don't like what we did and we want to roll the deployment back, 
 To revert we can simply run the following (assuming we want to revert to version 1)
 ```kubectl rollout undo deployment <deployment name> --to-revision=1```
 
-##Cleaning Up
+## Cleaning Up
 ```kubectl delete deployment <deployment name>```
 ```kubectl delete service <service name>```
 ```minikube stop```
