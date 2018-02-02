@@ -20,8 +20,8 @@ Next we want to login to dockerhub:
 ```docker login --username=<youraccount>```
 
 Next we can tag our images, to get your image hash run docker ps -a:
-```docker tag <hasn> <youraccount>/<reponame>:1```
-```docker tag <hasn> <youraccount>/<reponame>:2```
+```docker tag <hash> <youraccount>/<reponame>:1```
+```docker tag <hash> <youraccount>/<reponame>:2```
 
 Now we want to push both images:
 ```docker push <youraccount>/<reponame>:1```
@@ -52,8 +52,8 @@ You should now be able to navigate to the same IP address as the mikube dashboar
 ```kubectl get services```
 ```kubectl get deployments```
 ```kubectl describe deploy <deployment name>```
-```kubectl rollout status <deployment name>```
-```kubectl rollout history <deployment name>```
+```kubectl rollout status deployment <deployment name>```
+```kubectl rollout history deployment <deployment name>```
 
 ### Make Deployment Changes
 Change the number of replicas in the deploy.yml to 10 and save. Then run:
@@ -61,9 +61,9 @@ Change the number of replicas in the deploy.yml to 10 and save. Then run:
 Next lets change the image used from the one ending :1 to :2 and save. Then run:
 ```kubectl apply -f deploy.yml --record```
 You can check the status of the rollout using the following:
-```kubectl rollout status <deployment name>```
+```kubectl rollout status deployment <deployment name>```
 Now lets say we don't like what we did and we want to roll the deployment back, we can view the history by running:
-```kubectl rollout history <deployment name>```
+```kubectl rollout history deployment <deployment name>```
 To revert we can simply run the following (assuming we want to revert to version 1)
 ```kubectl rollout undo deployment <deployment name> --to-revision=1```
 
